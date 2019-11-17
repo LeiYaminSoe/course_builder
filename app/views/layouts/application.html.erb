@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CourseBuilder</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <%= favicon_link_tag asset_path('course_favicon.png') %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'custom' %>
+    
+  </head>
+
+  <body>
+    <!-- Wrapper-->
+    <div id="wrapper" class="<%= params[:controller] %>.<%= params[:action] %>">
+
+      <!-- Page wraper -->
+      <div id="page-wrapper" class="gray-bg <%= @extra_class %>">
+
+        <!-- Header -->
+        <%= render 'layouts/header' %>
+        <!-- End Header -->
+
+        <!-- Main view  -->
+        <div id="body-content" class="content">
+          <%=yield %>
+        </div>
+        <!-- End Main view  -->
+
+        <!-- Footer -->
+        <%= render 'layouts/footer' %>
+        <!-- End Footer -->
+
+      </div>
+      <!-- End page wrapper-->
+
+    </div>
+    <!-- End wrapper-->
+  </body>
+</html>
