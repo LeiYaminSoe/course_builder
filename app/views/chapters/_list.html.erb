@@ -1,0 +1,23 @@
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <% chapters.each do |chapter| %>
+        <div class="col-md-4">
+          <div class="card border-secondary mb-3">
+            <div class="card-body text-secondary">
+              <p class="card-text">Name: <%= chapter.title %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <%= link_to 'View More', chapter, :class => "btn btn-sm btn-outline-warning cus-btn" %>
+                  <%= link_to 'Edit', edit_chapter_path(chapter), :class => "btn btn-sm btn-outline-warning cus-btn" %>
+                  <%= link_to 'Delete', chapter_path(chapter), method: :delete, data: {confirm: "Are you sure you want to delete?"}, :class => "btn btn-sm btn-outline-warning cus-btn" %>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        <% end %>  
+      </div>
+    </div>
+  </div>
+</div>

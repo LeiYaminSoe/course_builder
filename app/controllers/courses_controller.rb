@@ -4,7 +4,7 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all
+    @courses = Course.all.page(params[:page]).per(5).order('created_at DESC')
   end
 
   # GET /courses/1
@@ -69,6 +69,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.fetch(:course, {})
+      params.require(:course).permit(:name, :subtitle, :description, :price, :duration, :created_at, :updated_at, :chapters => [:title, :order, :course_id, :created_at, :updated_at])
     end
 end

@@ -1,17 +1,41 @@
-<%= form_with(model: chapter, local: true) do |form| %>
-  <% if chapter.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(chapter.errors.count, "error") %> prohibited this chapter from being saved:</h2>
-
-      <ul>
-      <% chapter.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="row">
+  <div class="container col-md-10 cus-margin">
+    <div class="card">
+      <div class="card-header cus-font">
+        New Chapter
+      </div>
+      <div class="card-body">
+        <%= simple_form_for @chapter do |f| %>
+          <% if @chapter.errors.any? %>
+            <div id="error_explanation">
+              <ul>
+                <% @chapter.errors.full_messages.each do |message| %>
+                  <li class="font-error"><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div cliass="col-md-12">
+            <%= f.hidden_field :course_id, :value => @course.id %>
+            <div class="form-group">
+              <label class="col-md-2 control-label">Title:</label>
+              <div class="col-md-10">
+                <%= f.text_field :title, class: "form-control cus-form-font" %>
+              </div>
+            </div>
+            </br>
+            </br>
+            <div class="form-group">
+              <div class="col-md-2 pull-right">
+                  <%= f.submit "Save", class: "form-control cus-form-font btn btn-warning" %>
+                </div>
+                <div class="col-md-2 pull-right">
+                  <%= link_to 'Back', chapters_path, class: "form-control cus-form-font btn btn-warning" %>
+                </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
   </div>
-<% end %>
+</div>

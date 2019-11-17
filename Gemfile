@@ -69,3 +69,6 @@ gem 'jquery-rails'
 
 #simple_form_for
 gem 'simple_form'
+
+#pagination
+gem 'kaminari'

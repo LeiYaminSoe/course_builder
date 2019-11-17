@@ -1,17 +1,74 @@
-<%= form_with(model: course, local: true) do |form| %>
-  <% if course.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
-
-      <ul>
-      <% course.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="row">
+  <div class="container col-md-10 cus-margin">
+    <div class="card">
+      <div class="card-header cus-font">
+        New Course
+      </div>
+      <div class="card-body">
+        <%= simple_form_for @course do |f| %>
+          <% if @course.errors.any? %>
+            <div id="error_explanation">
+              <ul>
+                <% @course.errors.full_messages.each do |message| %>
+                  <li class="font-error"><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div cliass="col-md-12">
+            <div class="form-group">
+              <label class="col-md-2 control-label">Name:</label>
+              <div class="col-md-10">
+                <%= f.text_field :name, class: "form-control cus-form-font" %>
+              </div>
+            </div>
+            </br>
+            </br>
+            </br>
+            <div class="form-group">
+              <label class="col-md-2 control-label">Subtitle:</label>
+              <div class="col-md-10">
+                <%= f.text_field :subtitle, class: "form-control cus-form-font" %>
+              </div>
+            </div>
+            </br>
+            </br>
+            <div class="form-group">
+              <label class="col-md-2 control-label">Description:</label>
+              <div class="col-md-10">
+                <%= f.text_area :description, class: "form-control cus-form-font" %>
+              </div>
+            </div>
+            </br>
+            </br>
+            </br>
+            <div class="form-group">
+              <label class="col-md-2 control-label">Price:</label>
+              <div class="col-md-10">
+                <%= f.number_field :price, value: number_to_currency(f.object.price.to_f, delimiter: '', unit: ''), precision: 8, step: 2, class: "form-control cus-form-font" %>
+              </div>
+            </div>
+            </br>
+            </br>
+            <div class="form-group">
+              <label class="col-md-2 control-label">Duration:</label>
+              <div class="col-md-10">
+                <%= f.number_field :duration, value: number_to_currency(f.object.duration.to_f, delimiter: '', unit: ''), precision: 5, step: 2, class: "form-control cus-form-font" %>
+              </div>
+            </div>
+            </br>
+            </br>
+            <div class="form-group">
+              <div class="col-md-2 pull-right">
+                  <%= f.submit "Save", class: "form-control cus-form-font btn btn-warning" %>
+                </div>
+                <div class="col-md-2 pull-right">
+                  <%= link_to 'Back', courses_path, class: "form-control cus-form-font btn btn-warning" %>
+                </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
   </div>
-<% end %>
+</div>

@@ -17,54 +17,21 @@
   font-family: cursive;
 }
 
-.sml-text-white{
-  color: #fff!important;
-  font-size: 14px;
+.style_image{
+  width: 150px;
+  height: 80px;
+  margin-left: -20px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  border-radius: 8%;
 }
 
 .cus-font{
   font-weight: bold;
-  font-size: 18px;
-  color: #17a2b8;
+  font-size: 20px;
+  color: #5e6470;
 }
 
-.cus-form-font{
-  font-size: 14px !important;
-}
-
-.cus-margin{
-  margin-left: 4% !important;
-}
-
-label{
-  color: #3F3F3F;
-}
-
-.content{
-  height: calc( 100vh + 50px ) !important;
-}
-
-.font-error{
-  color: red;
-}
-
-.cus-col-big{
-  width: 26% !important;
-}
-
-.cus-col-sml{
-  width: 8% !important;
-}
-
-.style_image{
-  width: 150px;
-  height: 80px;
-  margin-left: -50px;
-  margin-top: 3px;
-  margin-bottom: 3px;
-  border-radius: 7%;
-}
-
-ul {
-  list-style-type: none;
+.cus-btn{
+  color: #e6ab67 !important;
 }

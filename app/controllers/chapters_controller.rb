@@ -14,6 +14,7 @@ class ChaptersController < ApplicationController
 
   # GET /chapters/new
   def new
+    @course = Course.find(params[:course_id])
     @chapter = Chapter.new
   end
 
@@ -69,6 +70,6 @@ class ChaptersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def chapter_params
-      params.fetch(:chapter, {})
+      params.require(:chapter).permit(:title, :order, :course_id, :created_at, :updated_at, :contents => [:title, :order, :content, :chapter_id, :created_at, :updated_at])
     end
 end

@@ -2,7 +2,9 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <%= image_tag asset_path('thinkific_logo.png'), :class => "style_image" %>
+        <%= link_to root_path do %>
+          <%= image_tag asset_path('thinkific_logo.png'), :class => "style_image" %>
+        <% end %>
       </li>
       <li class="nav-item active">
         <h2 class="text-white">&nbsp;</h2>
