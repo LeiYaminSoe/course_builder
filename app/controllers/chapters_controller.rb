@@ -26,7 +26,13 @@ class ChaptersController < ApplicationController
   # POST /chapters.json
   def create
     @chapter = Chapter.new(chapter_params)
-
+    max_order_chap = Chapter.maximum(:chap_order)
+    if max_order_chap.present?
+      next_order = max_order_chap + 1
+      @chapter.chap_order = next_order
+    else
+      @chapter.chap_order = 1
+    end
     respond_to do |format|
       if @chapter.save
         format.html { redirect_to @chapter, notice: 'Chapter was successfully created.' }
@@ -70,6 +76,6 @@ class ChaptersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def chapter_params
-      params.require(:chapter).permit(:title, :order, :course_id, :created_at, :updated_at, :contents => [:title, :order, :content, :chapter_id, :created_at, :updated_at])
+      params.require(:chapter).permit(:title, :chap_order, :course_id, :created_at, :updated_at, :contents => [:title, :cont_order, :content, :chapter_id, :created_at, :updated_at])
     end
 end

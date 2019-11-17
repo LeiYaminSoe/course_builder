@@ -14,6 +14,7 @@ class ContentsController < ApplicationController
 
   # GET /contents/new
   def new
+    @chapter = Chapter.find(params[:chapter_id])
     @content = Content.new
   end
 
@@ -69,6 +70,6 @@ class ContentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def content_params
-      params.fetch(:content, {})
+      params.require(:content).permit(:title, :cont_order, :content, :chapter_id, :created_at, :updated_at)
     end
 end

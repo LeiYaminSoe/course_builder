@@ -1,8 +1,12 @@
 <div class="row">
-  <div class="container col-md-10 cus-margin">
+  <div class="container col-md-12 cus-margin">
     <div class="card">
       <div class="card-header cus-font">
-        New Chapter
+        <% if @chapter.id.present? %>
+          Editing Chapter
+        <% else %>
+          New Chapter
+        <% end %>
       </div>
       <div class="card-body">
         <%= simple_form_for @chapter do |f| %>
@@ -16,13 +20,18 @@
             </div>
           <% end %>
           <div cliass="col-md-12">
-            <%= f.hidden_field :course_id, :value => @course.id %>
+            <% if @chapter.id.present? %>
+              <%= f.hidden_field :course_id, :value => @chapter.course_id %>
+            <% else %>
+              <%= f.hidden_field :course_id, :value => @course.id %>
+            <% end %>
             <div class="form-group">
               <label class="col-md-2 control-label">Title:</label>
               <div class="col-md-10">
                 <%= f.text_field :title, class: "form-control cus-form-font" %>
               </div>
             </div>
+            </br>
             </br>
             </br>
             <div class="form-group">

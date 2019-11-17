@@ -1,4 +1,21 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_content_path(@content) %> |
-<%= link_to 'Back', contents_path %>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="container col-md-12 cus-margin">
+      <div class="card">
+        <div class="card-header cus-font">
+          Content Detail
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div id="content_detail">
+                <%= render 'detail' %>
+              </div>
+            </div>
+          </div>
+          </br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
