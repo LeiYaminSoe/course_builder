@@ -1,25 +1,36 @@
 <div class="album py-5 bg-light">
   <div class="container">
     <div class="row">
-      <% contents.each do |content| %>
-        <div class="col-md-4">
-          <div class="card border-secondary mb-3">
-            <div class="card-body text-secondary">
-              <p class="card-text">Title: <%= content.title %></p>
-              <p class="card-text">Content: <%= content.content %></p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <%= link_to 'View More', content, :class => "btn btn-sm btn-outline-warning cus-btn" %>
-                  <%= link_to 'Edit', edit_content_path(content), :class => "btn btn-sm btn-outline-warning cus-btn" %>
-                  <%= link_to 'Delete', content_path(content), method: :delete, data: {confirm: "Are you sure you want to delete?"}, :class => "btn btn-sm btn-outline-warning cus-btn" %>
+      <div class="sortable">
+        <% contents.each_with_sortable_id do |content, sortable_id| %>
+          <div id="<%= sortable_id %>" class="<%= contents.length == 1? 'col-md-12' : contents.length == 2? 'col-md-6' : 'col-md-4' %>">
+            <div class="card mb-3 rounded <%= content.id%3 == 1? 'border-info' : content.id%3 == 2? 'border-dark' : 'border-danger' %>">
+              <div class="card-body <%= content.id%3 == 1? 'text-danger' : content.id%3 == 2? 'text-primary' : 'w3-theme-deep-purple' %>">
+                <p class="card-text">Title: <%= content.title %></p>
+                <p class="card-text">Content: <%= content.content.html_safe %></p>
+                <%= simple_form_for content do |f| %>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <label class="col-md-4 control-label">Chapter:</label>
+                    <div class="col-md-8 mb-3">
+                      <%= f.collection_select(:chapter_id, Chapter.all, :id, :title) %>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                    <%= f.submit "Change Chapter", class: "btn btn-sm btn-outline-warning cus-btn" %>
+                    <%= link_to 'View More', content, :class => "btn btn-sm btn-outline-warning cus-btn" %>
+                    <%= link_to 'Edit', edit_content_path(content), :class => "btn btn-sm btn-outline-warning cus-btn" %>
+                    <%= link_to 'Delete', content_path(content), method: :delete, data: {confirm: "Are you sure you want to delete?"}, :class => "btn btn-sm btn-outline-warning cus-btn" %>
+                  </div>
+                
+                <% end %>
+                </div>
                 </div>
               </div>
-              </div>
             </div>
-          </div>
-        <% end %>  
-      </div>
+          <% end %>  
+        </div>
+       </div>
     </div>
   </div>
 </div>
-            

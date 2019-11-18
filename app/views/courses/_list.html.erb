@@ -2,12 +2,12 @@
   <div class="container">
     <div class="row">
       <% @courses.each do |course| %>
-        <div class="col-md-4">
+        <div class="<%= @courses.length == 1? 'col-md-12' : @courses.length == 2? 'col-md-6' : 'col-md-4' %>">
           <div class="card border-secondary mb-3">
             <div class="card-body text-secondary">
               <p class="card-text">Name: <%= course.name %></p>
               <p class="card-text">Subtitle: <%= course.subtitle %></p>
-              <p class="card-text">Description: <%= course.description %></p>
+              <p class="card-text">Description: <%= course.description.html_safe %></p>
               <p class="card-text">Price: <%= number_to_currency(course.price, :unit => "$", precision: 2) %></p>
               <p class="card-text">Duration: <%= number_with_precision(course.duration, precision: 2) %></p>
               <div class="d-flex justify-content-between align-items-center">

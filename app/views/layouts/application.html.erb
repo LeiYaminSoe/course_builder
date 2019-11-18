@@ -11,6 +11,14 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'custom' %>
     
+    <!-- Include style per-controller - vendor plugins -->
+    <%= stylesheet_link_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.css") %>
+    <%= stylesheet_link_tag "#{params[:controller]}/#{params[:action]}" if ::Rails.application.assets.find_asset("#{params[:controller]}/#{params[:action]}.css") %>
+
+    <!-- Include javascript per-controller - vendor plugins -->
+    <%= javascript_include_tag "#{params[:controller]}" if ::Rails.application.assets.find_asset("#{params[:controller]}.js") %>
+    <%= javascript_include_tag "#{params[:controller]}/#{params[:action]}" if ::Rails.application.assets.find_asset("#{params[:controller]}/#{params[:action]}.js") %>
+    
   </head>
 
   <body>
@@ -21,7 +29,7 @@
       <div id="page-wrapper" class="gray-bg <%= @extra_class %>">
 
         <!-- Header -->
-        <%= render 'layouts/header' %>
+        <!-- <%= render 'layouts/header' %> -->
         <!-- End Header -->
 
         <!-- Main view  -->

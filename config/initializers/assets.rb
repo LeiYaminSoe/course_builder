@@ -14,3 +14,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
 Rails.application.config.assets.precompile += %w( custom.scss )
+Rails.application.config.assets.precompile += %w( courses.js courses.scss )
+Rails.application.config.assets.precompile += %w(chapters.js)
+Rails.application.config.assets.precompile += %w(chapters.scss)
+Rails.application.config.assets.precompile += %w( contents.js contents.scss )

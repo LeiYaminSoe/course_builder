@@ -66,6 +66,10 @@ gem 'bootstrap-sass'
 
 #jquery
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
+
+#sortable
+gem 'rails_sortable'
 
 #simple_form_for
 gem 'simple_form'
