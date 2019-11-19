@@ -41,13 +41,13 @@
             <div class="form-group">
               <label class="col-md-2 control-label">Price:</label>
               <div class="col-md-10 mb-3">
-                <%= f.number_field :price, value: number_to_currency(f.object.price.to_f, delimiter: '', unit: ''), precision: 8, step: 2, class: "form-control cus-form-font" %>
+                <%= f.number_field :price, value: number_to_currency(f.object.price.to_f, delimiter: '', unit: ''), precision: 8, step: ".01", class: "form-control cus-form-font" %>
               </div>
             </div>
             <div class="form-group">
               <label class="col-md-2 control-label">Duration:</label>
               <div class="col-md-10 mb-3">
-                <%= f.number_field :duration, value: number_to_currency(f.object.duration.to_f, delimiter: '', unit: ''), precision: 5, step: 2, class: "form-control cus-form-font" %>
+                <%= f.number_field :duration, value: number_to_currency(f.object.duration.to_f, delimiter: '', unit: ''), precision: 5, step: ".01", class: "form-control cus-form-font" %>
               </div>
             </div>
             <div class="form-group">

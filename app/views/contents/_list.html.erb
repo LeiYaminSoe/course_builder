@@ -4,10 +4,15 @@
       <div class="sortable">
         <% contents.each_with_sortable_id do |content, sortable_id| %>
           <div id="<%= sortable_id %>" class="<%= contents.length == 1? 'col-md-12' : contents.length == 2? 'col-md-6' : 'col-md-4' %>">
-            <div class="card mb-3 rounded <%= content.id%3 == 1? 'border-info' : content.id%3 == 2? 'border-dark' : 'border-danger' %>">
-              <div class="card-body <%= content.id%3 == 1? 'text-danger' : content.id%3 == 2? 'text-primary' : 'w3-theme-deep-purple' %>">
+            <div class="card mb-3 border-secondary">
+              <div class="card-body text-secondary">
                 <p class="card-text">Title: <%= content.title %></p>
-                <p class="card-text">Content: <%= content.content.html_safe %></p>
+                <% if content.content.present? %>
+                  <p class="card-text">Content: <%= truncate(content.content.html_safe, :length => 230, :omission => "" , :escape => false) %></p>
+                <% end %>
+                <% if content.content_files.present? %>
+                  <p class="card-text">Downloadable Content: <%= link_to content.content_files_identifier, download_path(content.id), :class => "btn-sm btn-outline-warning cus-btn"  %></p>
+                <% end %>
                 <%= simple_form_for content do |f| %>
                   <div class="d-flex justify-content-between align-items-center">
                     <label class="col-md-4 control-label">Chapter:</label>
@@ -21,8 +26,7 @@
                     <%= link_to 'View More', content, :class => "btn btn-sm btn-outline-warning cus-btn" %>
                     <%= link_to 'Edit', edit_content_path(content), :class => "btn btn-sm btn-outline-warning cus-btn" %>
                     <%= link_to 'Delete', content_path(content), method: :delete, data: {confirm: "Are you sure you want to delete?"}, :class => "btn btn-sm btn-outline-warning cus-btn" %>
-                  </div>
-                
+                  </div>                
                 <% end %>
                 </div>
                 </div>

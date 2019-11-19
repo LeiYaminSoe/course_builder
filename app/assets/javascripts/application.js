@@ -14,6 +14,9 @@
 //= require jquery_ujs
 //= require jquery-ui/widgets/sortable
 //= require rails_sortable
-//= require bootstrap-sprockets
+//= require popper
+//= require bootstrap
+//= require summernote/summernote-bs4.min
+//= require summernote-init
 //= require turbolinks
 //= require_tree .

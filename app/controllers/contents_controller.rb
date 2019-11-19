@@ -25,8 +25,22 @@ class ContentsController < ApplicationController
   # POST /contents
   # POST /contents.json
   def create
+    if params[:content_type].present?
+      content_type = params[:content_type]
+      define_file_extension = ""
+      case content_type
+      when "3"
+        define_file_extension = "audio/mp3"
+      when "4"
+        define_file_extension = "video/mp4"
+      when "5"
+        define_file_extension = "file/pdf"
+      else
+        define_file_extension = ""
+      end
+    end
+  debugger
     @content = Content.new(content_params)
-
     respond_to do |format|
       if @content.save
         format.html { redirect_to @content, notice: 'Content was successfully created.' }
@@ -61,6 +75,13 @@ class ContentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def download
+    @content = Content.find(params[:id])    
+    filepath = @content.content_files.current_path
+    stat = File::stat(filepath)
+    send_file(filepath, :filename => @content.content_files_identifier, :length => stat.size)
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -70,6 +91,6 @@ class ContentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def content_params
-      params.require(:content).permit(:title, :cont_order, :content, :chapter_id, :created_at, :updated_at)
+      params.require(:content).permit(:title, :cont_order, :content, :chapter_id, :created_at, :updated_at, :content_files, :content_type)
     end
 end
