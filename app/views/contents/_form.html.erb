@@ -25,17 +25,13 @@
               <div class="col-md-10 mb-3">
                 <%= f.text_field :title, class: "form-control cus-form-font" %>
               </div>
-            </div>
-            <% if @content.id.present? %>                          
+            </div>                         
               <div class="form-group">
                 <label class="col-md-2 control-label">Chapter:</label>
                 <div class="col-md-10 mb-3">
-                  <%= f.collection_select(:chapter_id, Chapter.all, :id, :title, {prompt: ""}, {class: "form-control cus-form-font"}) %>
+                  <%= f.collection_select(:chapter_id, Chapter.all, :id, :title, {include_blank: false}, {class: "form-control cus-form-font"}) %>
                 </div>
               </div>
-            <% else %>
-              <%= f.hidden_field :chapter_id, :value => @chapter.id %>
-            <% end %>
             <div class="form-group">
               <label class="col-md-2 control-label">Choose Content Type:</label>
               <div class="col-md-10 mb-3">
@@ -91,26 +87,6 @@
                 </div>
             </div>
           </div>
-          <script>
-            $('#content_content').summernote({
-      // unfortunately you can only rewrite
-      // all the toolbar contents, on the bright side
-      // you can place uploadcare button wherever you want
-      toolbar: [
-        ['style', ['style']],
-        ['font', ['bold', 'italic', 'underline', 'clear']],
-        ['fontname', ['fontname']],
-        ['color', ['color']],
-        ['para', ['ul', 'ol', 'paragraph']],
-        ['height', ['height']],
-        ['table', ['table']],
-        ['insert', ['media', 'link', 'hr', 'audio', 'file', 'video', 'picture']],
-        ['view', ['fullscreen', 'codeview']],
-        ['help', ['help']]
-        
-      ]
-    });
-          </script>
         <% end %>
       </div>
     </div>

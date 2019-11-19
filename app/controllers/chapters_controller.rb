@@ -14,7 +14,7 @@ class ChaptersController < ApplicationController
 
   # GET /chapters/new
   def new
-    @course = Course.find(params[:course_id])
+    #@course = Course.find(params[:course_id])
     @chapter = Chapter.new
   end
 

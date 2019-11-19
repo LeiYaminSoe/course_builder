@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="sortable">
-        <% @chapters.each_with_sortable_id do |chapter, sortable_id| %>
+        <% @course.chapters.each_with_sortable_id do |chapter, sortable_id| %>
           <div id="<%= sortable_id %>" class="col-md-6">
             <div class="card border-secondary mb-3">
               <div class="card-body text-secondary">

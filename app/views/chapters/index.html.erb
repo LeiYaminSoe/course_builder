@@ -1,13 +1,29 @@
-<table>
-  <tbody id="sortable">  <!-- sortable target -->
-    <% @chapters.each_with_sortable_id do |chapter, sortable_id| %>
-      <tr id="<%= sortable_id %>">  <!-- Needs id tag on sorting elements -->
-        <td><%= chapter.title %></td>
-        <td><%= chapter.chap_order %></td>
-        <td><%= link_to 'View More', chapter, :class => "btn btn-sm btn-outline-warning cus-btn" %></td>
-        <td><%= link_to 'Edit', edit_chapter_path(chapter), :class => "btn btn-sm btn-outline-warning cus-btn" %></td>
-        <td><%= link_to 'Delete', chapter_path(chapter), method: :delete, data: {confirm: "Are you sure you want to delete?"}, :class => "btn btn-sm btn-outline-warning cus-btn" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="container col-md-12 cus-margin">
+      <div class="card">
+        <div class="card-header cus-font">
+          Chapters
+        </div>
+        <div class="card-body">          
+          <div class="row">
+            <div class="col-md-2">
+              <%= link_to 'New Chapter', new_chapter_path, class: "form-control cus-form-font btn btn-warning" %>
+            </div>
+          </div>
+          </br>
+          <div class="row">
+            <div class="col-md-12">
+              <% if @chapters.present? %>
+                <div id="chapter_list_form">
+                  <%= render 'list' %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</br>

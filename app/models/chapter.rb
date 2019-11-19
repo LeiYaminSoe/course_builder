@@ -8,4 +8,6 @@ class Chapter < ApplicationRecord
   
   validates :title, presence: true
   validates_length_of :title, maximum: 255
+  
+  validates :course_id, presence: true
 end

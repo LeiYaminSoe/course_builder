@@ -14,7 +14,7 @@ class ContentsController < ApplicationController
 
   # GET /contents/new
   def new
-    @chapter = Chapter.find(params[:chapter_id])
+    #@chapter = Chapter.find(params[:chapter_id])
     @content = Content.new
   end
 
@@ -39,7 +39,6 @@ class ContentsController < ApplicationController
         define_file_extension = ""
       end
     end
-  debugger
     @content = Content.new(content_params)
     respond_to do |format|
       if @content.save

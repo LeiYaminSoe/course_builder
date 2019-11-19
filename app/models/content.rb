@@ -7,4 +7,6 @@ class Content < ApplicationRecord
   
   validates :title, presence: true
   validates_length_of :title, maximum: 255
+  
+  validates :chapter_id, presence: true
 end

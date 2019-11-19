@@ -8,7 +8,7 @@
         <div class="card-body">
           <div class="row">
             <div class="col-md-2">
-              <%= link_to 'New Chapter', {:controller => "chapters", :action => "new", :course_id => @course.id }, class: "form-control cus-form-font btn btn-warning" %>
+              <%= link_to 'New Chapter', new_chapter_path, class: "form-control cus-form-font btn btn-warning" %>
             </div>
           </div>
           </br>
@@ -35,7 +35,7 @@
             <div class="col-md-12">
               <% if @course.chapters.present? %>
                 <div id="chapter_list_form">
-                  <%= render partial:"chapters/list", locals:{chapters:@course.chapters} %>
+                  <%= render "chapter_list" %>
                 </div>
               <% end %>
             </div>

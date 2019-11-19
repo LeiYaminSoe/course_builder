@@ -2,13 +2,13 @@
   <div class="container">
     <div class="row">
       <div class="sortable">
-        <% @contents.each_with_sortable_id do |content, sortable_id| %>
+        <% @chapter.contents.each_with_sortable_id do |content, sortable_id| %>
           <div id="<%= sortable_id %>" class="col-md-6">
             <div class="card border-secondary mb-3 cus-cont-box">
               <div class="card-body text-secondary cus-cont-scroll">
                 <p class="card-text">Title: <%= content.title %></p>
                 <% if content.content.present? %>
-                  <p class="card-text">Content: <%= content.content.html_safe %></p>
+                  <p class="card-text">Content: <%= truncate(content.content.html_safe, :length => 230, :omission => "" , :escape => false) %></p>
                 <% end %>
                 <% if content.content_files.present? %>
                   <p class="card-text">Downloadable Content: <%= link_to content.content_files_identifier, download_path(content.id), :class => "btn-sm btn-outline-warning cus-btn"  %></p>

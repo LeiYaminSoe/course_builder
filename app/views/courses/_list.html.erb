@@ -2,9 +2,9 @@
   <div class="container">
     <div class="row">
       <% @courses.each do |course| %>
-        <div class="<%= @courses.length == 1? 'col-md-12' : @courses.length == 2? 'col-md-6' : 'col-md-4' %>">
-          <div class="card border-secondary mb-3">
-            <div class="card-body text-secondary">
+        <div class="col-md-6">
+          <div class="card border-secondary mb-3 cus-cont-box">
+            <div class="card-body text-secondary cus-cont-scroll">
               <p class="card-text">Name: <%= course.name %></p>
               <p class="card-text">Subtitle: <%= course.subtitle %></p>
               <p class="card-text">Description: <%= course.description.html_safe %></p>
