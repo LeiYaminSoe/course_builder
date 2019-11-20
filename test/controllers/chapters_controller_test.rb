@@ -1,7 +1,18 @@
 require 'test_helper'
 
 class ChaptersControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
+  def sign_in(user)
+    post user_session_path \
+      "leiyaminsoe@gmail.com"    => user.email,
+      "Y@min13051987" => user.password
+  end
+
   setup do
+    @lei = users(:lei)
+    @lei.created_at = '2019-11-20 17:14:01.658998'
+    sign_in(@lei)
     @chapter = chapters(:one)
   end
 

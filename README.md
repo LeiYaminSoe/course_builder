@@ -1,24 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
+* Ruby version: 2.5.5
+* Rails version: 5.2.3
 
 * Database creation
+* Postgresql
+* rake db:create
+* then rake db:migrate
 
-* Database initialization
+* How to run
+* rails s -b 0.0.0.0 -p 3000
 
-* How to run the test suite
+* Sign-up sign-in
+* Devise gem
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* How to run Test Suite
+* rails test test/models/course_test.rb 
+* rails test test/models/chapter_test.rb 
+* rails test test/models/content_test.rb
+* rails test test/controllers/courses_controller_test.rb 
+* rails test test/controllers/contents_controller_test.rb 
+* rails test test/controllers/chapters_controller_test.rb 
