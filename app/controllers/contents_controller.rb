@@ -14,7 +14,9 @@ class ContentsController < ApplicationController
 
   # GET /contents/new
   def new
-    #@chapter = Chapter.find(params[:chapter_id])
+    if params[:chapter_id].present?
+      @chapter = Chapter.find(params[:chapter_id])
+    end
     @content = Content.new
   end
 
@@ -25,20 +27,6 @@ class ContentsController < ApplicationController
   # POST /contents
   # POST /contents.json
   def create
-    if params[:content_type].present?
-      content_type = params[:content_type]
-      define_file_extension = ""
-      case content_type
-      when "3"
-        define_file_extension = "audio/mp3"
-      when "4"
-        define_file_extension = "video/mp4"
-      when "5"
-        define_file_extension = "file/pdf"
-      else
-        define_file_extension = ""
-      end
-    end
     @content = Content.new(content_params)
     respond_to do |format|
       if @content.save
@@ -53,7 +41,25 @@ class ContentsController < ApplicationController
 
   # PATCH/PUT /contents/1
   # PATCH/PUT /contents/1.json
-  def update
+  def update  
+    @content = Content.find(params[:id])
+    
+    if @content.present?
+      if @content.summernote_content.present?
+        if params[:content][:content].present? || params[:content][:content_files].present?
+          params[:content][:summernote_content] = nil
+        end
+      elsif @content.content.present?
+        if params[:content][:summernote_content].present? || params[:content][:content_files].present?
+          params[:content][:content] = nil
+        end
+      elsif @content.content_files.present?
+        if params[:content][:summernote_content].present? || params[:content][:content].present?
+          params[:content][:content_files] = nil
+        end
+      end      
+    end
+    
     respond_to do |format|
       if @content.update(content_params)
         format.html { redirect_to @content, notice: 'Content was successfully updated.' }
@@ -90,6 +96,6 @@ class ContentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def content_params
-      params.require(:content).permit(:title, :cont_order, :content, :chapter_id, :created_at, :updated_at, :content_files, :content_type)
+      params.require(:content).permit(:title, :cont_order, :content, :chapter_id, :created_at, :updated_at, :content_files, :content_type, :summernote_content)
     end
 end

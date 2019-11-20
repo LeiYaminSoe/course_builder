@@ -4,16 +4,20 @@
       <div class="sortable">
         <% @chapters.each_with_sortable_id do |chapter, sortable_id| %>
           <div id="<%= sortable_id %>" class="col-md-6">
-            <div class="card border-secondary mb-3">
-              <div class="card-body text-secondary">
-                <p class="card-text">Name: <%= chapter.title %></p>
-                <p class="card-text">Order: <%= chapter.chap_order %></p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <%= link_to 'View More', chapter, :class => "btn btn-sm btn-outline-warning cus-btn" %>
-                    <%= link_to 'Edit', edit_chapter_path(chapter), :class => "btn btn-sm btn-outline-warning cus-btn" %>
-                    <%= link_to 'Delete', chapter_path(chapter), method: :delete, data: {confirm: "Are you sure you want to delete?"}, :class => "btn btn-sm btn-outline-warning cus-btn" %>
+            <div class="card border-secondary mb-3 cus-cont-box2">
+              <div class="card-body text-secondary cus-cont-scroll">
+                <div class="col-md-12 mb-3">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <%= link_to 'View More', chapter, :class => "btn btn-sm btn-outline-warning cus-btn" %>
+                      <%= link_to 'Edit', edit_chapter_path(chapter), :class => "btn btn-sm btn-outline-warning cus-btn" %>
+                      <%= link_to 'Delete', chapter_path(chapter), method: :delete, data: {confirm: "Are you sure you want to delete?"}, :class => "btn btn-sm btn-outline-warning cus-btn" %>
+                    </div>
                   </div>
+                </div>
+                <label class="col-md-3 control-label">Title:</label>
+                <div class="col-md-9 mb-3">
+                  <%= chapter.title %>
                 </div>
                 </div>
               </div>

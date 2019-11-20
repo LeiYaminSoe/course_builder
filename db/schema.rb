@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_19_085229) do
+ActiveRecord::Schema.define(version: 2019_11_20_080249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 2019_11_19_085229) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "content_files"
+    t.integer "content_type", limit: 2, default: 1
+    t.text "summernote_content"
     t.index ["chapter_id"], name: "index_contents_on_chapter_id"
   end
 

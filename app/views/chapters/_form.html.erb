@@ -23,7 +23,11 @@
             <div class="form-group">
               <label class="col-md-2 control-label">Course:</label>
               <div class="col-md-10 mb-3">
-                <%= f.collection_select(:course_id, Course.all, :id, :name, {include_blank: false}, {class: "form-control cus-form-font"}) %>
+                <% if @course.present? %>
+                  <%= f.collection_select(:course_id, Course.all, :id, :name, {include_blank: false, :selected => @course.id}, {class: "form-control cus-form-font"}) %>
+                <% else %>
+                  <%= f.collection_select(:course_id, Course.all, :id, :name, {include_blank: false}, {class: "form-control cus-form-font"}) %>
+                <% end %>
               </div>
             </div>    
             <div class="form-group">
@@ -34,11 +38,8 @@
             </div>
             <div class="form-group">
               <div class="col-md-2 pull-right">
-                  <%= f.submit "Save", class: "form-control cus-form-font btn btn-warning" %>
-                </div>
-                <div class="col-md-2 pull-right">
-                  <%= link_to 'Back', chapters_path, class: "form-control cus-form-font btn btn-warning" %>
-                </div>
+                <%= f.submit "Save", class: "form-control cus-form-font btn btn-warning" %>
+              </div>
             </div>
           </div>
         <% end %>

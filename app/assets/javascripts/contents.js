@@ -1,29 +1,18 @@
 $(document).ready(function(){
-    $("#content-summernote").show();
-    $("#content-html").hide();
-    $("#content-audio").hide();
-    $("#content-video").hide();
-    $("#content-pdf").hide();
+  change_content();
+  //alert("hi");
+  //$(".content_content").removeClass('error');
+  $("#new_content").find('.field_with_errors').removeClass("field_with_errors");
+  //$("#new_content").find('.error').removeClass("field_with_errors");
+  $('.error').remove(); 
 });
-(function ($) {
-  //$('#content_content').summernote();
-  //$('.dropdown-toggle').dropdown();
-  
-
-    /* $('#content_content').summernote({
-      // unfortunately you can only rewrite
-      // all the toolbar contents, on the bright side
-      // you can place uploadcare button wherever you want
-      toolbar: [
-        ['style', ['style']]
-        ['insert', ['media', 'link', 'hr', 'audio', 'video', 'picture']]
-        
-      ]
-    }); */
-})(jQuery);
 
 function change_content(){
-  var contentType = $('#content_type :selected').val();
+  //alert("hoooo");
+  var contentType = $('#content_content_type :selected').val();
+  if(typeof contentType == "undefined" || contentType == '' || contentType == null){
+    contentType = 1;
+  }
   if(contentType == 1){
     $("#content-summernote").show();
     $("#content-html").hide();

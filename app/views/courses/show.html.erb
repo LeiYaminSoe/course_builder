@@ -8,7 +8,7 @@
         <div class="card-body">
           <div class="row">
             <div class="col-md-2">
-              <%= link_to 'New Chapter', new_chapter_path, class: "form-control cus-form-font btn btn-warning" %>
+              <%= link_to 'New Chapter', {:controller => "chapters", :action => "new", :course_id => @course.id }, class: "form-control cus-form-font btn btn-warning" %>
             </div>
           </div>
           </br>

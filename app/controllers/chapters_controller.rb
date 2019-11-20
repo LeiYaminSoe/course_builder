@@ -14,7 +14,9 @@ class ChaptersController < ApplicationController
 
   # GET /chapters/new
   def new
-    #@course = Course.find(params[:course_id])
+    if params[:course_id].present?
+      @course = Course.find(params[:course_id])
+    end
     @chapter = Chapter.new
   end
 
@@ -26,13 +28,6 @@ class ChaptersController < ApplicationController
   # POST /chapters.json
   def create
     @chapter = Chapter.new(chapter_params)
-    max_order_chap = Chapter.maximum(:chap_order)
-    if max_order_chap.present?
-      next_order = max_order_chap + 1
-      @chapter.chap_order = next_order
-    else
-      @chapter.chap_order = 1
-    end
     respond_to do |format|
       if @chapter.save
         format.html { redirect_to @chapter, notice: 'Chapter was successfully created.' }

@@ -5,17 +5,34 @@
         <div class="col-md-6">
           <div class="card border-secondary mb-3 cus-cont-box">
             <div class="card-body text-secondary cus-cont-scroll">
-              <p class="card-text">Name: <%= course.name %></p>
-              <p class="card-text">Subtitle: <%= course.subtitle %></p>
-              <p class="card-text">Description: <%= course.description.html_safe %></p>
-              <p class="card-text">Price: <%= number_to_currency(course.price, :unit => "$", precision: 2) %></p>
-              <p class="card-text">Duration: <%= number_with_precision(course.duration, precision: 2) %></p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <%= link_to 'View More', course, :class => "btn btn-sm btn-outline-warning cus-btn" %>
-                  <%= link_to 'Edit', edit_course_path(course), :class => "btn btn-sm btn-outline-warning cus-btn" %>
-                  <%= link_to 'Delete', course_path(course), method: :delete, data: {confirm: "Are you sure you want to delete?"}, :class => "btn btn-sm btn-outline-warning cus-btn" %>
+              <div class="col-md-12 mb-3">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <%= link_to 'View More', course, :class => "btn btn-sm btn-outline-warning cus-btn" %>
+                    <%= link_to 'Edit', edit_course_path(course), :class => "btn btn-sm btn-outline-warning cus-btn" %>
+                    <%= link_to 'Delete', course_path(course), method: :delete, data: {confirm: "Are you sure you want to delete?"}, :class => "btn btn-sm btn-outline-warning cus-btn" %>
+                  </div>
                 </div>
+              </div>
+              <label class="col-md-3 control-label">Name:</label>
+              <div class="col-md-9 mb-3">
+                <%= course.name %>
+              </div>
+              <label class="col-md-3 control-label">Subtitle:</label>
+              <div class="col-md-9 mb-3">
+                <%= course.subtitle %>
+              </div>
+              <label class="col-md-3 control-label">Description:</label>
+              <div class="col-md-9 mb-3">
+                <p class="card-text"><%= course.description.html_safe %></p>
+              </div>
+              <label class="col-md-3 control-label">Price:</label>
+              <div class="col-md-9 mb-3">
+                <%= number_to_currency(course.price, :unit => "$", precision: 2) %>
+              </div>
+              <label class="col-md-3 control-label">Duration:</label>
+              <div class="col-md-9 mb-3">
+                <%= number_with_precision(course.duration, precision: 2) %>
               </div>
             </div>
           </div>
