@@ -85,3 +85,6 @@ gem 'popper_js', '~> 1.14.5'
 
 #carrierwave
 gem 'carrierwave', '~> 2.0'
+
+#autentication
+gem 'devise'

@@ -2,17 +2,27 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <%= link_to root_path do %>
+        <%= link_to courses_path do %>
           <%= image_tag asset_path('thinkific_logo.png'), :class => "style_image" %>
         <% end %>
       </li>
       <li class="nav-item active">
-        <h2 class="text-white">&nbsp;</h2>
+        <h2 class="text-white"></h2>
       </li>
       <li class="nav-item active">
         <h2 class="text-white">Course Builder System</h2>
       </li>
     </ul>
+    <p class="navbar-text float-right">
+      <% if user_signed_in? %>
+	Logged in as <strong><%= current_user.email %></strong>.
+	<%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+	<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
+      <% else %>
+	<%= link_to 'Sign up', new_user_registration_path, :class => 'navbar-link' %> |
+	<%= link_to 'Login', new_user_session_path, :class => 'navbar-link' %>
+      <% end %>
+    </p>	
   </div>
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto pull-right">
