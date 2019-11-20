@@ -1,20 +1,59 @@
-<h2>Log in</h2>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="container col-md-5">
+      <div class="card">
+        <div class="card-header cus-font">
+          Log in
+        </div>
+        <div class="card-body">
+          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group md-3">
+                  <%= f.input :email,
+                    required: false,
+                    autofocus: true,
+                    input_html: { autocomplete: "email", :class => "cus-label" } %>
+              </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group md-3">
+                  <%= f.input :password,
+                    required: false,
+                    input_html: { autocomplete: "current-password", :class => "cus-label" } %>
+              </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group md-3 cus-label">
+                  <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group md-3">
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+
+                  <div class="form-actions">
+                    <%= f.button :submit, "Log in", class: "cus-btn" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group md-3">
+                <%= render "devise/shared/links" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  </br>
