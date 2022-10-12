@@ -84,7 +84,7 @@ gem 'summernote-rails', '~> 0.8.12.0'
 gem 'popper_js', '~> 1.14.5'
 
 #carrierwave
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.1'
 
 #autentication
 gem 'devise'
